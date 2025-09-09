@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSession } from "next-auth/react"
 import { CreateNewDocument } from '@/actions/useractions'
 
-const AddDocument = () => {
+const AddDocument = ({templateContent, buttonName}) => {
     const { data: session, update } = useSession()
 
     const [showForm, setShowForm] = useState(false)
@@ -41,7 +41,7 @@ const AddDocument = () => {
         e.preventDefault()
         console.log('Creating document with:', formData)
         // mongodb logic
-        await CreateNewDocument(formData);
+        await CreateNewDocument(formData, templateContent);
         setShowForm(false)
         setFormData({ title: '', description: '', category: '' })
         // this refresh session so, data in homepage get up to date
@@ -50,7 +50,7 @@ const AddDocument = () => {
 
     return (
         <div>
-            <button  onClick={() => setShowForm(true)} className='px-4 py-2 cursor-pointer rounded-lg bg-gradient-to-r from-purple-400 to-blue-400 text-white'>Add document</button>
+            <button  onClick={() => setShowForm(true)} className='px-4 py-2 cursor-pointer rounded-lg bg-gradient-to-r from-purple-400 to-blue-400 text-white'>{buttonName}</button>
 
 
             {showForm && (

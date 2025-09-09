@@ -55,7 +55,7 @@ export default function Home() {
           <h1 className='text-4xl '>Collaborative Editing Supercharged with AI</h1>
           <p className='text-lg my-5 w-[40vw] text-center' >Create, edit, and collaborate on documents in real-time with AI-powered writing assistance. The modern way to write together.</p>
           <div className='AddAndJoin w-[38vw] flex gap-2 justify-between items-center'>
-            <AddDocument />
+            <AddDocument buttonName={'Create Document'}/>
             <div className='joinDocument w-[25vw]'>
               <form onSubmit={handleJoinLink} className="flex gap-2">
                 <input

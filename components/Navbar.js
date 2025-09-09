@@ -50,7 +50,7 @@ const Navbar = () => {
         <Link href={session?'/':'/login'} className='' >Home</Link>
         <Link href={session?'/documents':'/login'} className='' >Documents</Link>
         <Link href={session?'/templates':'/login'} className='' >Templates</Link>
-        <Link href={session?'/':'/login'} className='' >Contact</Link>
+        <Link href={session?'/projectguide':'/login'} className='' >Guide</Link>
       </div>
       {console.log('session')
       }
