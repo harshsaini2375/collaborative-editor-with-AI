@@ -97,7 +97,7 @@ const Chatbot = ({ documentId }) => {
             {messagearray.length === 0 && <div className='AI_Assist font-bold flex gap-2 top-4 left-4 absolute items-center'><Image src={'/sparkle.svg'} alt='sparkle' height={30} width={30}/>AI assist</div>}
 
                 {/* Orb fixed behind AI_Chat */}
-                <div className="absolute top-0 left-0 w-full h-[78vh] z-0 overflow-hidden">
+                <div className="absolute top-[20vh]  left-0  w-full h-[40vh] z-0 overflow-hidden">
                     <Orb
                        
                         hoverIntensity={0.5}

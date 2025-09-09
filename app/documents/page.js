@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { useSession } from "next-auth/react"
 import { getallDocuments, deleteSelectedDoc } from '@/actions/useractions'
 import AddDocument from '@/components/AddDocument'
+import Searchbar from '@/components/Searchbar'
 
 const page = () => {
 
@@ -31,8 +32,9 @@ const page = () => {
     
     return (
         <div className='documents h-[90vh] w-screen  px-[20vw] bg-[#f7f7f7]'>
-            <div className='create flex justify-between py-5' >
+            <div className='create flex justify-between items-center py-5 ' >
                 <h1 className='text-2xl font-bold '>Documents</h1>
+                <Searchbar usedFor={'collabeditor'} />
                 <AddDocument buttonName={'Add Document'}/>
             </div>
             <div className='documentlist  px-2 py-2 w-[60vw] h-[75vh] rounded-xl bg-white

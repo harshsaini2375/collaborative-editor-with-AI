@@ -113,3 +113,42 @@ export const getTemplateObject = async (keyID) => {
   }
   return null;
 }
+
+
+export const getSearchData = async (searchTerm, sessionEmail, usedFor) => {
+
+  const client = await clientPromise;
+  const db = client.db("collaborativeEditor");
+
+  if (usedFor == 'collabeditor' && sessionEmail) {
+    const documentsCollection = db.collection("documents");
+
+    const results = await documentsCollection.find({
+      docname: { $regex: searchTerm, $options: 'i' }, // partial match, case-insensitive
+      creatoremail: sessionEmail // filter by user
+    }).toArray();
+
+    const transformedArr = results.map(currdoc => ({
+      ...currdoc,
+      _id: currdoc._id.toString(), // Convert ObjectId to plain string
+    }));
+
+    return transformedArr;
+  }
+
+  if (usedFor == 'templates') {
+    const templatesCollection = db.collection("templates");
+
+    const results = await templatesCollection.find({
+      title: { $regex: searchTerm, $options: 'i' } // partial match, case-insensitive
+    }).toArray();
+    const transformedArr = results.map(currdoc => ({
+      ...currdoc,
+      _id: currdoc._id.toString(), // Convert ObjectId to plain string
+    }));
+
+    return transformedArr;
+  }
+
+
+}
