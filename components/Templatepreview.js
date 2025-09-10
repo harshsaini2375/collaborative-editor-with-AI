@@ -38,10 +38,18 @@ const Templatepreview = ({ templateID }) => {
                     </div>
                     <h2 className='text-xl mt-5 font-medium'>Description</h2>
                     <p className='description'>{preview.description}</p>
+                    {preview.features && <> <h2 className='text-xl mt-5 font-medium'>Features</h2>
+                    <div className='featuresArray mt-1  flex flex-wrap gap-2'>
+                       {preview.features.map((element)=>(
+                        <div key={element} className='border-2 border-gray-200 rounded-md w-fit px-2 text-sm text-gray-400 '>{element}</div>
+                       ))} 
+                    </div> </>}
+                    
+                    
                 </div>
 
-                <div className='templateimage relative overflow-hidden  w-[40vw] h-full rounded-xl bg-white'>
-                    <Image className='object-cover ' src={'/cardimage.svg'} alt='likes' fill />
+                <div className='templateimage relative overflow-hidden border-2 border-gray-200  w-[40vw] h-full rounded-xl bg-white'>
+                    <Image className='object-contain ' src={`/${preview.preview}.png`} alt='likes' fill />
                 </div>
             </div>
             }

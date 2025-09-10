@@ -1,13 +1,14 @@
 'use client'; // This is crucial! It marks this component as Client-Side only.
 
 import React from 'react'
-
-import { useRef, useEffect, useCallback, useState } from 'react';
+import html2pdf from 'html2pdf.js';
+import { useRef, useEffect, useState } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css'; // Import the styles
 import { useSocket } from '@/context/SocketContext';
 import Image from 'next/image';
 import { useSession } from "next-auth/react"
+import { getDocumentWithID } from '@/actions/useractions';
 
 
 const RichTextEditor = ({ documentId }) => {
@@ -36,17 +37,25 @@ const RichTextEditor = ({ documentId }) => {
     // 1. The Absolute Basics (Most Used)
     ['bold', 'italic', 'underline'],
 
-    // 2. Structure & Organization (Critical for documents)
-    [{ 'header': [2, 3, 4, false] }], // H2, H3, H4. Skip H1 (often the page title)
+    // 2. Fonts & Text Size
+    [{ 'font': [] }], // Default font list
+    // [{ 'size': ['small', false, 'large', 'huge'] }], // Custom sizes
+
+    // 3. Colors
+    [{ 'color': [] }, { 'background': [] }], // Text color & background
+
+    // 4. Structure & Organization
+    [{ 'header': [2, 3, 4, false] }],
     [{ 'list': 'ordered' }, { 'list': 'bullet' }],
     ['blockquote'],
-    // 3. Collaboration & Connectivity
-    ['link', 'image'], // Essential for sharing references
 
-    // 4. Cleanup
-    ['clean'], // Remove formatting
+    // 5. Collaboration & Connectivity
+    ['image'],
 
+    // 6. Cleanup
+    ['clean']
   ];
+
 
   useEffect(() => {
     // This useEffect only runs in the browser
@@ -62,6 +71,25 @@ const RichTextEditor = ({ documentId }) => {
 
     }
   }, []);
+
+
+
+  const handleDownload = async () => {
+    // there is a div having class '.ql-editor' automatically created by quill
+    const element = document.querySelector('.ql-editor');
+    const docObj = await getDocumentWithID(documentId);
+
+    const opt = {
+      margin: 10,
+      filename: docObj.docname,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+    };
+
+    html2pdf().set(opt).from(element).save();
+  };
 
 
   // fuction that runs when one clicks on AI button in toolbar after selection of some text
@@ -390,7 +418,7 @@ const RichTextEditor = ({ documentId }) => {
 
       </div>
 
-      <div className='AI_buttons flex gap-3 text-sm font-bold  h-[4vh]' >
+      <div className='AI_buttons flex gap-[28px] text-sm font-bold  h-[4vh]' >
         <button
           onClick={() => handleAIChat('improve')}
           className="border-2 border-gray-300 rounded-lg px-4 py-1 hover:text-yellow-500"
@@ -420,16 +448,26 @@ const RichTextEditor = ({ documentId }) => {
 
       </div>
 
-      <div className="get_Document_link mt-3 h-[6vh] w-full rounded-2xl flex  justify-between items-center">
-        <div className='your_link border-2 border-gray-300 w-[39vw] h-full rounded-full text-sm px-2 flex items-center text-gray-400 overflow-hidden whitespace-nowrap '>
-          {documentId}
+      <div className="get_Document_link  mt-3 h-[6vh] w-full rounded-2xl flex  gap-7 items-center  ">
+        <div className='flex gap-[28px]'>
+          <div className='your_link border-2 border-gray-300 w-[26.5vw] py-[5px] rounded-lg text-sm px-2 flex items-center text-gray-400 overflow-hidden whitespace-nowrap '>
+            {documentId}
+          </div>
+          <button onClick={() => {
+            navigator.clipboard.writeText(documentId);
+            alert("Document ID copied to clipboard!");
+          }}
+            className='text-white bg-red-500 text-sm cursor-pointer rounded-md  px-3  flex items-center gap-1'><Image src={'/copy.svg'} alt='copy' width={20} height={20} />Copy</button>
         </div>
-        <button onClick={() => {
-          navigator.clipboard.writeText(documentId);
-          alert("Document ID copied to clipboard!");
-        }}
-          className='text-white bg-[#e70011]  cursor-pointer rounded-full px-5 h-full flex justify-center items-center gap-1'><Image src={'/copy.svg'} alt='copy' width={20} height={20} />Copy</button>
+        <button
+          onClick={handleDownload}
+          className="pl-[14px] pr-[18px] py-[3px] cursor-pointer bg-gradient-to-r flex gap-2  from-[#8150f2] to-[#407cf5] text-white font-semibold rounded-md"
+        >
+          <Image src={'/download.svg'} alt='download' width={20} height={20} />
+          Download PDF
+        </button>
       </div>
+
 
     </div>
   )

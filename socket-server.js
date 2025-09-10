@@ -110,21 +110,9 @@ io.on('connection', async (socket) => {
     }
 
     // you should handle when user type anything randam after slash(no valid document)
-    // if (!document) {
-    //   // If the document doesn't exist, create a new one!
-    //   const newDocument = {
-    //     docname: documentId,
-    //     content: new Delta(), // Start with an empty Delta
-    //     creator: sessionname,
-    //     creatoremail: sessionemail,
-    //     createdAt: new Date(),
-    //     updatedAt: new Date()
-    //   };
-
-    //   // Insert the new document into the collection
-    //   await documentsCollection.insertOne(newDocument);
-    //   document = newDocument; // Use the newly created document
-    // }
+    if (!document) {
+      return;
+    }
 
     // Send the current document content from MongoDB to the user who just joined
     socket.emit('load-document', document.content); // Send the content field

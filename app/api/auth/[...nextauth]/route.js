@@ -24,7 +24,7 @@ const authoptions = NextAuth({
         const client = await clientPromise;
         const db = client.db("collaborativeEditor")
         const templateCollection = db.collection("templates")
-        const documentCollection = db.collection("documents")
+        // const documentCollection = db.collection("documents")
 
         // for enable search text query for documents
         // await documentCollection.createIndex({
@@ -45,6 +45,7 @@ const authoptions = NextAuth({
         //             description: 'Comprehensive project proposal template with ROI analysis, risk assessment, and stakeholder alignment sections. Includes built-in financial modeling, timeline visualization, and resource allocation matrices for executive presentations.',
         //             category: 'Business',
         //             premium: true,
+        //             preview: 'strategic',
         //             content: {
         //               ops: [
         //                 { insert: 'STRATEGIC PROJECT PROPOSAL', attributes: { header: 1, align: 'center', bold: true, color: '#7c3aed' } },
@@ -138,6 +139,7 @@ const authoptions = NextAuth({
         //             description: 'Professional meeting template with automated attendee tracking, decision logging, and AI-powered action item extraction. Includes time tracking, voting systems, and integration-ready sections for project management tools.',
         //             category: 'Business',
         //             premium: true,
+        //             preview: 'executivemeeting',
         //             content: {
         //               ops: [
         //                 { insert: 'EXECUTIVE MEETING NOTES', attributes: { header: 1, align: 'center', bold: true, color: '#1e40af' } },
@@ -320,6 +322,7 @@ const authoptions = NextAuth({
         //             description: 'Comprehensive API documentation template with interactive examples, authentication guides, and error code references. Includes code samples in multiple languages, rate limiting details, and SDK integration guides.',
         //             category: 'Technical',
         //             premium: true,
+        //             preview: 'api',
         //             content: {
         //               ops: [
         //                 { insert: 'API DOCUMENTATION: ECOMMERCE PLATFORM V2', attributes: { header: 1, align: 'center', bold: true, color: '#1e40af' } },
@@ -470,6 +473,7 @@ const authoptions = NextAuth({
         //             description: 'Executive business report template with advanced data visualization, KPI tracking, and strategic insights. Includes financial dashboards, performance metrics, and automated chart placeholders for professional reporting.',
         //             category: 'Business',
         //             premium: true,
+        //             preview: 'premiumbusiness',
         //             content: {
         //               ops: [
         //                 { insert: 'QUARTERLY BUSINESS REPORT', attributes: { header: 1, align: 'center', bold: true, color: '#1e40af' } },
@@ -636,6 +640,7 @@ const authoptions = NextAuth({
         //             description: 'Comprehensive academic research template with APA 7th edition formatting, literature review frameworks, methodology sections, and statistical analysis placeholders. Perfect for graduate-level research and publications.',
         //             category: 'Academic',
         //             premium: true,
+        //             preview: 'advancedresearch',
         //             content: {
         //               ops: [
         //                 { insert: 'THE IMPACT OF CLIMATE CHANGE ON COASTAL BIODIVERSITY', attributes: { header: 1, align: 'center', bold: true } },
@@ -751,6 +756,7 @@ const authoptions = NextAuth({
         //             description: 'A beautifully crafted creative writing template with atmospheric elements, character development guides, and sensory detail prompts. Perfect for novels, short stories, and immersive storytelling with built-in writing inspiration.',
         //             category: 'Creative',
         //             premium: true,
+        //             preview: 'creativewriting',
         //             content: {
         //               ops: [
         //                 { insert: 'THE WHISPERING WOODS', attributes: { header: 1, align: 'center', bold: true, color: '#7c3aed' } },
@@ -936,7 +942,7 @@ const authoptions = NextAuth({
         //             title: 'Essay Outline',
         //             description: 'A structured framework template designed to help students and writers organize their thoughts and arguments effectively. Includes sections for thesis statements, topic sentences, evidence, and analysis. Perfect for academic essays, research papers, and any structured writing assignment.',
         //             category: 'Academic',
-        //             preview: '/templates/academic/essay-outline.svg',
+        //             preview: 'essayoutline',
         //             content: {
         //               ops: [
         //                 { insert: '{Essay Title}', attributes: { header: 1, align: 'center' } },
@@ -982,7 +988,7 @@ const authoptions = NextAuth({
         //             title: 'Technical Specification',
         //             description: 'A detailed template for creating comprehensive technical specifications and architecture documents. Includes sections for system overview, architecture diagrams, data models, API design, security considerations, and deployment strategies. Perfect for software engineers and architects.',
         //             category: 'Technical',
-        //             preview: '/templates/technical/tech-spec.svg',
+        //             preview: 'specification',
         //             content: {
         //               ops: [
         //                 { insert: 'Technical Specification: ', attributes: { header: 1 } },
@@ -1032,7 +1038,7 @@ const authoptions = NextAuth({
         //             title: 'Bug Report',
         //             description: 'A structured template for documenting software issues and bug reports effectively. Includes sections for environment details, reproduction steps, expected vs actual behavior, screenshots, and severity assessment. Perfect for quality assurance teams and developers tracking issues.',
         //             category: 'Technical',
-        //             preview: '/templates/technical/bug-report.svg',
+        //             preview: 'bugreport',
         //             content: {
         //               ops: [
         //                 { insert: 'Bug Report', attributes: { header: 1, background: '#fef2f2', color: '#dc2626' } },
@@ -1078,7 +1084,7 @@ const authoptions = NextAuth({
         //             title: 'Personal Journal',
         //             description: 'A reflective template designed for daily journaling and personal reflection. Includes sections for mood tracking, daily highlights, challenges, gratitude, reflections, and future goals. Perfect for mindfulness practice and personal growth tracking.',
         //             category: 'Creative',
-        //             preview: '/templates/creative/personal-journal.svg',
+        //             preview: 'journal',
         //             content: {
         //               ops: [
         //                 { insert: 'Journal Entry: ', attributes: { header: 1 } },
@@ -1129,7 +1135,7 @@ const authoptions = NextAuth({
         //             title: 'Blog Post',
         //             description: 'An engaging template designed for creating compelling blog content with SEO optimization. Includes sections for catchy headlines, featured images, introduction, main content with subheadings, conclusion, and key takeaways. Perfect for content creators and bloggers.',
         //             category: 'Creative',
-        //             preview: '/templates/creative/blog-post.svg',
+        //             preview: 'blogpost',
         //             content: {
         //               ops: [
         //                 { insert: '{Catchy Blog Title}', attributes: { header: 1, align: 'center', color: '#1e40af' } },
@@ -1174,6 +1180,7 @@ const authoptions = NextAuth({
         //   description: 'Advanced study notes template with cognitive learning techniques, visual mapping, and active recall systems. Includes spaced repetition scheduling, concept interconnection diagrams, and exam preparation strategies.',
         //   category: 'Academic',
         //   premium: true,
+        //   preview: 'studynotes',
         //   content: {
         //     ops: [
         //       { insert: 'ADVANCED NEUROSCIENCE - STUDY MASTERY', attributes: { header: 1, align: 'center', bold: true, color: '#7c3aed' } },

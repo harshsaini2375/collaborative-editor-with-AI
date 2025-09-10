@@ -10,7 +10,7 @@ export const getallDocuments = async (creatorname) => {
   const db = client.db("collaborativeEditor")
   const documentsCollection = db.collection("documents")
 
-  const documentsarr = await documentsCollection.find({ creator: creatorname }).toArray();
+  const documentsarr = await documentsCollection.find({ creator: creatorname }).sort({ updatedAt: -1 }).toArray();
 
   const transformedArr = documentsarr.map(currdoc => ({
     ...currdoc,
@@ -35,7 +35,8 @@ export const CreateNewDocument = async (docDetails, templateContent) => {
   const documentsCollection = db.collection("documents")
 
   if (templateContent) {
-    await documentsCollection.insertOne({
+    // when we insert document, it returns is of inserted document
+   const returnID = await documentsCollection.insertOne({
       docname: docDetails.title,
       description: docDetails.description,
       category: docDetails.category,
@@ -45,8 +46,10 @@ export const CreateNewDocument = async (docDetails, templateContent) => {
       createdAt: new Date(),
       updatedAt: new Date()
     });
+
+    return returnID.insertedId.toString();
   } else {
-    await documentsCollection.insertOne({
+   const returnID = await documentsCollection.insertOne({
       docname: docDetails.title,
       description: docDetails.description,
       category: docDetails.category,
@@ -56,6 +59,8 @@ export const CreateNewDocument = async (docDetails, templateContent) => {
       createdAt: new Date(),
       updatedAt: new Date()
     });
+   
+    return returnID.insertedId.toString();
   }
 
 

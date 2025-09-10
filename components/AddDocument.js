@@ -3,9 +3,11 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useSession } from "next-auth/react"
 import { CreateNewDocument } from '@/actions/useractions'
+import { useRouter } from 'next/navigation'
 
 const AddDocument = ({templateContent, buttonName}) => {
     const { data: session, update } = useSession()
+    const router = useRouter();
 
     const [showForm, setShowForm] = useState(false)
     const [formData, setFormData] = useState({
@@ -41,11 +43,13 @@ const AddDocument = ({templateContent, buttonName}) => {
         e.preventDefault()
         console.log('Creating document with:', formData)
         // mongodb logic
-        await CreateNewDocument(formData, templateContent);
+        const newDocID =  await CreateNewDocument(formData, templateContent);
         setShowForm(false)
         setFormData({ title: '', description: '', category: '' })
         // this refresh session so, data in homepage get up to date
-        await update();
+        // await update();
+        router.push(`/collabeditor/${newDocID}`);
+        
     }
 
     return (
