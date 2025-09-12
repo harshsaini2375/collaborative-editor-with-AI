@@ -1,7 +1,8 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import dynamic from 'next/dynamic';
 import Chatbot from './Chatbot';
+import Image from 'next/image';
 
 // Dynamically import the Quill component with SSR disabled
 const RichTextEditor = dynamic(
@@ -18,22 +19,58 @@ const ChatPanel = dynamic(
 );
 
 
-const Editor = ({docLink}) => {
+const Editor = ({ docLink }) => {
+  const [openchatpanel, setopenchatpanel] = useState(false)
+  const [openAIpanel, setopenAIpanel] = useState(false)
   return (
     <div>
-       <div className='home h-[90vh] w-screen px-6 gap-6 flex bg-[#f7f7f7]'>
-        <div className="left h-full w-[25%]  ">
-          <Chatbot documentId={docLink}/>
+      <div className='home h-[93vh] md:h-[90vh] w-screen px-2 md:px-6 gap-6 flex bg-[#f7f7f7]'>
+        {/* responsiveness for AI */}
+        <button  onClick={() => setopenAIpanel(!openAIpanel)} className= {`md:hidden ${openAIpanel ? 'hidden' : 'fixed'} bottom-[13px] cursor-pointer left-[85vw] z-70 `} >
+        <div className='h-[30px] w-[31px] rounded-full border flex justify-center items-center shadow-lg '> <Image src={'/aislider.svg'} alt='ham' height={20} width={20} /> </div>
+        </button>
+
+        <button  onClick={() => setopenAIpanel(false)}  className={`md:hidden fixed top-[22px] left-[85vw] z-70 transition-all duration-300 ease-in-out 
+    ${openAIpanel ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 pointer-events-none'}`} >
+        <Image src={'/cross.svg'} alt='ham' height={25} width={25} />
+        </button>
+
+        
+
+        <div className={`fixed bottom-0 left-0 w-full h-screen bg-white z-60 transition-transform duration-300 ease-in-out md:hidden 
+        ${openAIpanel ? 'translate-y-0' : 'translate-y-full'}`}>
+           <Chatbot documentId={docLink} />
         </div>
 
-        <div className="center h-full w-[50%]  ">
+
+        <div className="left h-full hidden md:block  w-[25%]  ">
+          <Chatbot documentId={docLink} />
+        </div>
+
+        
+        <div className="center  h-full w-screen md:w-[50%]  ">
           <RichTextEditor documentId={docLink} />
         </div>
-        <div className="right h-full w-[25%]">
+
+
+      {/* for chatpanel */}
+      {/* hamburger for mobile for chatbot */}
+        <button  onClick={() => setopenchatpanel(!openchatpanel)} className=" md:hidden fixed top-[8px] left-[10px] z-50  ">
+          {openchatpanel ? <Image src={'/cross.svg'} alt='ham' height={25} width={25} /> : <Image src={'/sidechat.svg'} alt='ham' height={30} width={30} />} 
+        </button>
+
+        <div className={`fixed  top-0 left-0 h-full w-[87vw] bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-40 md:hidden ${
+          openchatpanel ? 'translate-x-0' : '-translate-x-full'
+        }`}>
+          <ChatPanel documentId={docLink} />
+        </div>
+
+      {/* only visible in desktop */}
+         <div className="right h-full hidden md:block  w-[25%]  ">
           <ChatPanel documentId={docLink} />
         </div>
       </div>
-   
+
     </div>
   )
 }

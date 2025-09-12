@@ -418,10 +418,10 @@ const RichTextEditor = ({ documentId }) => {
 
       </div>
 
-      <div className='AI_buttons flex gap-[28px] text-sm font-bold  h-[4vh]' >
+      <div className='AI_buttons flex gap-[19px] md:gap-[28px] text-xs md:text-sm md:font-bold  h-[4vh]' >
         <button
           onClick={() => handleAIChat('improve')}
-          className="border-2 border-gray-300 rounded-lg px-4 py-1 hover:text-yellow-500"
+          className="border-2  border-gray-300 rounded-lg px-1 md:px-4 py-1 hover:text-yellow-500"
           disabled={isbtnloading != ''}
         >
           <span className="mr-1">✨</span>{isbtnloading == 'improve' ? 'AI Thinking...' : 'Improve with AI'}
@@ -429,7 +429,7 @@ const RichTextEditor = ({ documentId }) => {
 
         <button
           onClick={() => handleAIChat('formal')}
-          className="border-2 border-gray-300 rounded-lg px-4 py-1 hover:text-[#a06cd5]"
+          className="border-2  border-gray-300 rounded-lg px-1 md:px-4 py-1 hover:text-[#a06cd5]"
           disabled={isbtnloading != ''}
         >
           <span className="mr-1">👔</span> {isbtnloading == 'formal' ? 'AI Thinking...' : 'Make Formal'}
@@ -437,33 +437,33 @@ const RichTextEditor = ({ documentId }) => {
 
         <button
           onClick={() => handleAIChat('expand')}
-          className="border-2 border-gray-300 rounded-lg px-4 py-1 hover:text-[#57a7f6]"
+          className="border-2  border-gray-300 rounded-lg px-1 md:px-4 py-1 hover:text-[#57a7f6]"
           disabled={isbtnloading != ''}
         >
           <span className="mr-1">⤵️</span> {isbtnloading == 'expand' ? 'AI Thinking...' : 'Expand Text'}
         </button>
 
-        {/* <button onClick={() => {setautoSuggestToggle(!autoSuggestToggle)}} className={`border-2  rounded-lg px-4 py-1 ${autoSuggestToggle?"bg-gradient-to-r from-[#8150f2] to-[#407cf5] text-white":"border-blue-500"}`}>Auto-suggest with AI          
+        {/* <button onClick={() => {setautoSuggestToggle(!autoSuggestToggle)}} className={`border-2 hidden md:block rounded-lg px-4 py-1 ${autoSuggestToggle?"bg-gradient-to-r from-[#8150f2] to-[#407cf5] text-white":"border-blue-500"}`}>Auto-suggest with AI          
         </button> */}
 
       </div>
 
-      <div className="get_Document_link  mt-3 h-[6vh] w-full rounded-2xl flex  gap-7 items-center  ">
-        <div className='flex gap-[28px]'>
-          <div className='your_link border-2 border-gray-300 w-[26.5vw] py-[5px] rounded-lg text-sm px-2 flex items-center text-gray-400 overflow-hidden whitespace-nowrap '>
+      <div className="get_Document_link  mt-3 h-[6vh] w-full rounded-2xl flex gap-2  md:gap-7 items-center  ">
+        <div className='flex gap-2 md:gap-[28px]'>
+          <div className='your_link border-2 border-gray-300 w-[51vw] md:w-[26.5vw] py-[5px] rounded-lg text-sm px-2 flex items-center text-gray-400 overflow-hidden whitespace-nowrap '>
             {documentId}
           </div>
           <button onClick={() => {
             navigator.clipboard.writeText(documentId);
             alert("Document ID copied to clipboard!");
           }}
-            className='text-white bg-red-500 text-sm cursor-pointer rounded-md  px-3  flex items-center gap-1'><Image src={'/copy.svg'} alt='copy' width={20} height={20} />Copy</button>
+            className='text-white bg-red-500 text-xs md:text-sm cursor-pointer rounded-md px-2 md:px-3  flex items-center  gap-1'><Image className='hidden md:block ' src={'/copy.svg'} alt='copy' width={20} height={20} />Copy</button>
         </div>
         <button
           onClick={handleDownload}
-          className="pl-[14px] pr-[18px] py-[3px] cursor-pointer bg-gradient-to-r flex gap-2  from-[#8150f2] to-[#407cf5] text-white font-semibold rounded-md"
+          className="md:pl-[14px] md:pr-[18px] px-1 py-[6px] md:py-[3px] cursor-pointer bg-gradient-to-r flex gap-2  from-[#8150f2] to-[#407cf5] text-white text-sm md:text-base  md:font-semibold rounded-md"
         >
-          <Image src={'/download.svg'} alt='download' width={20} height={20} />
+          <Image className='hidden md:block ' src={'/download.svg'} alt='download' width={20} height={20} />
           Download PDF
         </button>
       </div>

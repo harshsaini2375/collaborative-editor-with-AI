@@ -90,9 +90,9 @@ const Chatbot = ({ documentId }) => {
     return (
         <div >
 
-            <div className='Artificial intelligence relative h-[89vh] w-full bg-white rounded-2xl  p-2 flex flex-col justify-end 
-        shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]
-        hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]
+            <div className='Artificial intelligence relative h-[98vh] md:h-[89vh] w-full bg-white rounded-2xl  p-2 flex flex-col justify-end 
+        md:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]
+        md:hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]
         transition-shadow duration-300  '>
             {messagearray.length === 0 && <div className='AI_Assist font-bold flex gap-2 top-4 left-4 absolute items-center'><Image src={'/sparkle.svg'} alt='sparkle' height={30} width={30}/>AI assist</div>}
 
@@ -113,7 +113,7 @@ const Chatbot = ({ documentId }) => {
                         <div className='curr_time text-gray-300 text-xs text-center'>{CurrentDateTime}</div>
 
                         {messagearray.map((msg, index) => (
-                            <div key={index} className={`my_question_OR_AI_Response mt-4 rounded-xl px-3   py-1 ${msg.role === 'user' ? "bg-gradient-to-r from-[#8150f2] to-[#407cf5] text-white h-fit max-w-[17vw] self-end " : " bg-white w-full h-fit border-2  border-gray-300  hover:bg-[#f7f7f7]"}`} >
+                            <div key={index} className={`my_question_OR_AI_Response mt-4 rounded-xl px-3   py-1 ${msg.role === 'user' ? "bg-gradient-to-r from-[#8150f2] to-[#407cf5] text-white h-fit max-w-[80vw] md:max-w-[17vw] self-end " : " bg-white w-full h-fit border-2  border-gray-300  hover:bg-[#f7f7f7]"}`} >
                                 {/* to format AI response so that it looks good */}
                                 {msg.role === 'assistant' ? (
                                     <div className="text-sm space-y-2">
@@ -153,7 +153,7 @@ const Chatbot = ({ documentId }) => {
                         <div ref={messagesEndRef} />
 
                         {/* Fade Overlay - Bottom Only */}
-                        <div className="absolute bottom-14 mt-1 left-0 right-0 z-10 py-3 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"></div>
+                        <div className="absolute bottom-14 mt-1 left-0 right-0 z-10 py-3 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none "></div>
 
                     </div>
                 )}
@@ -165,7 +165,7 @@ const Chatbot = ({ documentId }) => {
                 </div> */}
                 <div className={`takeInput border-2 z-20  rounded-3xl w-full h-fit px-5 py-1 flex justify-between items-center ${inputDiv ? "border-[#2584e2]" : "border-gray-300"}`} >
 
-                    <textarea placeholder='Ask AI anything...' className='w-[17vw] text-sm focus:outline-none resize-none  no-scrollbar overflow-y-auto min-h-[40px] max-h-[120px]'
+                    <textarea placeholder='Ask AI anything...' className=' w-[75vw] md:w-[17vw] text-sm focus:outline-none resize-none  no-scrollbar overflow-y-auto min-h-[40px] max-h-[40px] md:max-h-[120px]'
                         onChange={(e) => setnewmessage(e.target.value)}
                         value={newmessage}
 

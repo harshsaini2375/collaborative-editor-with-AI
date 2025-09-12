@@ -73,15 +73,15 @@ const ChatPanel = ({ documentId }) => {
     };
 
     return (
-        <div className="chat bg-white rounded-2xl h-[89vh] w-full p-3
+        <div className="chat bg-white md:rounded-2xl h-full md:h-[89vh] w-full p-3
          shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]
         hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]
         transition-shadow duration-300  ">
 
-            <div className='messages  h-[87%] w-full  mb-3 overflow-auto no-scrollbar'>
-                <h1 className='flex gap-2 text-lg mb-2 font-bold'>
+                <h1 className='flex h-[5%] gap-2 text-base items-center justify-self-end md:justify-self-start md:text-lg mb-2 font-bold'>
                     Live chat
                     <Image src={"/livechat.svg"} alt='livechat' height={20} width={20} /></h1>
+            <div className='messages h-[83%] md:h-[80%] w-full  mb-3 overflow-auto no-scrollbar'>
 
                 {messagearray.length === 0 ? <p className="text-gray-500 ">No messages yet. Start chatting!</p> : messagearray.map((msg, index) => (
                     <div key={index} className='message mb-4 h-fit w-full rounded-md border-2 border-gray-300 p-2 '>
@@ -96,16 +96,16 @@ const ChatPanel = ({ documentId }) => {
                                 hour12: true
                             })}</div>
                         </div>
-                        <div className='msgcontent rounded-md p-1 bg-[#f7f7f7] mt-2 ml-9 w-[88%] h-fit px-2 text-sm'>{msg.message}</div>
+                        <div className='msgcontent rounded-md p-1 bg-[#f7f7f7] md:mt-2 ml-9 w-[88%] h-fit px-2 text-sm'>{msg.message}</div>
                     </div>
                 ))}
                 {/* The <div ref={messagesEndRef} /> is an empty, invisible element that serves as the target for the scrolling. */}
                 <div ref={messagesEndRef} />
 
             </div>
-            <div className='sendmessage border-2 flex justify-between items-center border-gray-300 rounded-md p-2 h-[12%] w-full'>
-                <textarea value={newmessage} onChange={(e) => setnewmessage(e.target.value)} placeholder='Write your message' className=' h-full w-[13vw] focus:outline-none resize-none overflow-auto no-scrollbar text-sm '  ></textarea>
-                <button onClick={sendMessage} className='bg-black text-white h-fit py-3 px-5 rounded-3xl text-sm flex justify-center items-center gap-2 cursor-pointer'>
+            <div className='sendmessage border-2 flex justify-between items-center border-gray-300 rounded-md p-2 h-[8%] md:h-[12%] w-full'>
+                <textarea value={newmessage} onChange={(e) => setnewmessage(e.target.value)} placeholder='Write your message' className=' h-full w-[65%] md:w-[13vw] focus:outline-none resize-none overflow-auto no-scrollbar text-sm '  ></textarea>
+                <button onClick={sendMessage} className='bg-black text-white h-fit py-2 md:py-3 px-3 md:px-5 rounded-3xl text-sm flex justify-center items-center gap-2 cursor-pointer'>
                     <Image src={"/sendbtn.svg"} alt='send btn' height={20} width={20} />
                     Send</button>
             </div>

@@ -4,18 +4,18 @@ import Link from 'next/link';
 
 const page = () => {
     return (
-        <div className='guide h-[90vh] w-screen flex justify-center  bg-[#f7f7f7]'>
-        <div className="px-6 py-10 w-[70vw] h-[88vh] overflow-auto no-scrollbar ">
+        <div className='guide h-[93vh] md:h-[90vh] w-screen flex justify-center  bg-[#f7f7f7]'>
+        <div className="md:px-6 px-2 py-10 w-[95vw] md:w-[70vw] h-[90vh] md:h-[88vh] overflow-auto no-scrollbar ">
             {/* Hero Section */}
-            <section className="mb-12 text-center">
-                <h1 className="text-4xl font-bold mb-4">Welcome to Your Collaborative Editor</h1>
-                <p className="text-gray-600 text-lg">
+            <section className="md:mb-12 mb-8 text-center">
+                <h1 className=" text-lg md:text-4xl font-bold mb-2 md:mb-4">Welcome to Your Collaborative Editor</h1>
+                <p className="text-gray-600 text-sm md:text-lg">
                     Real-time editing, AI-powered writing, and seamless teamwork — all in one place.
                 </p>
             </section>
 
             {/* Feature Grid */}
-            <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 md:mb-16">
                 {/* AI Features */}
                 <div className="bg-white rounded-xl shadow p-6">
                     <h2 className="text-xl font-semibold mb-2">🧠 AI Assistant</h2>
@@ -72,10 +72,10 @@ const page = () => {
                 <h2 className="text-2xl font-bold mb-4">🚀 Ready to Get Started?</h2>
                 <p className="text-gray-600 mb-6">Create a document, explore templates, or join an existing one.</p>
                 <div className="flex justify-center gap-4">
-                    <Link href="/documents" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    <Link href="/documents" className="px-4 md:px-6 py-2 md:py-3 md:text-base text-sm bg-blue-600 text-white rounded-md md:rounded-lg hover:bg-blue-700 transition">
                         View Your Documents
                     </Link>
-                    <Link href="/templates" className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                    <Link href="/templates" className="px-4 md:px-6 py-2 md:py-3 md:text-base text-sm bg-green-600 text-white rounded-md md:rounded-lg hover:bg-green-700 transition">
                         Try a Template
                     </Link>
                 </div>
