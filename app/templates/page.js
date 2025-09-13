@@ -5,7 +5,7 @@ import { getTemplatesByCategory } from '@/actions/useractions'
 import { useState } from 'react'
 import Searchbar from '@/components/Searchbar'
 
-const page = () => {
+const Page = () => {
 
   const [businessarray, setbusinessarray] = useState([])
   const [academicarray, setacademicarray] = useState([])
@@ -69,4 +69,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

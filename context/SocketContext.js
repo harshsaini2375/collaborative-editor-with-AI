@@ -19,7 +19,11 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     // Connect to our standalone socket server
-    const newSocket = io('http://localhost:3001');
+
+     // Connect to socket server - use environment variable
+    const socketUrl = process.env.NEXT_PUBLIC_SOCKET_SERVER_URL;
+
+    const newSocket = io(socketUrl);
     setSocket(newSocket);
 
     // Cleanup on unmount

@@ -8,7 +8,7 @@ import { getallDocuments, deleteSelectedDoc } from '@/actions/useractions'
 import AddDocument from '@/components/AddDocument'
 import Searchbar from '@/components/Searchbar'
 
-const page = () => {
+const Page = () => {
 
     const { data: session } = useSession()
 
@@ -107,4 +107,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

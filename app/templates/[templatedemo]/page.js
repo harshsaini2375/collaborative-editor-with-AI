@@ -1,7 +1,7 @@
 import React from 'react'
 import Templatepreview from '@/components/Templatepreview'
 
-const page = async ({ params }) => {
+const Page = async ({ params }) => {
     const templateID = (await params).templatedemo
     
     return (
@@ -11,4 +11,4 @@ const page = async ({ params }) => {
     )
 }
 
-export default page
+export default Page
