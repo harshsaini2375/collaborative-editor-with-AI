@@ -15,7 +15,7 @@ export async function POST(request) {
       headers: {
         'Authorization': `Bearer ${OPENROUTER_API_KEY}`, // Free tier
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'http://localhost:3000',
+        'HTTP-Referer': process.env.NEXTAUTH_URL,
         'X-Title': 'Collaborative Editor AI'
       },
       body: JSON.stringify({
