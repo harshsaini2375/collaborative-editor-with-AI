@@ -29,12 +29,12 @@ const httpServer = createServer(app);
 // Configure CORS to allow requests from your Next.js frontend
 // This is crucial to avoid connection errors
 app.use(cors({
-  origin: "http://localhost:3000", // Your Next.js app URL
+  origin: process.env.FRONTEND_URL, // Your Next.js app URL
   methods: ["GET", "POST"]
 }));
 
 // Initialize Socket.io and attach it to the http server
-const io = new Server(server, {
+const io = new Server(httpServer, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
       ? process.env.FRONTEND_URL 
