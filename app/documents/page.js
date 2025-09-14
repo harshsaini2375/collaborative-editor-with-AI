@@ -70,7 +70,7 @@ const Page = () => {
                 <div className='header w-full py-3 md:py-4 rounded-md bg-[#f7f7f7] md:text-base text-sm flex font-bold'>
                     <div className='owner w-[30%] md:w-[15%]  px-2'>Owner</div>
                     <div className='title w-[30%] md:w-[35%]  px-2'>Title</div>
-                    <div className='created w-[30%] md:w-[15%]  px-2'>modified on</div>
+                    <div className='created w-[30%] md:w-[15%] text-xs md:text-base px-2 flex justify-center items-center'>modified on</div>
                     <div className='collaborators hidden md:block w-[20%]  px-2'>Collaborators</div>
                     <div className='delete w-[10%] md:w-[15%] px-2 text-center'><span className='md:block hidden '>Delete</span></div>
                 </div>
@@ -81,7 +81,7 @@ const Page = () => {
                             <div key={element._id} className='documentelement w-full py-3 md:py-4 text-sm md:text-base rounded-md border-2 hover:bg-[#f7f7f7] border-gray-300 flex mb-4'>
                                 <Link className='md:w-[85%] w-[90%] flex' href={`/collabeditor/${element._id}`}><div className='owner w-[33%] md:w-[17.6%]  px-2 text-wrap break-words '>{element.creator}</div>
                                     <div className='title w-[33%] md:w-[41.17%] text-wrap break-words  px-2'>{element.docname}</div>
-                                    <div className='created w-[33%] md:w-[17.6%] px-2'>
+                                    <div className='created w-[33%] md:w-[17.6%] text-xs md:text-base  px-1 flex justify-center items-center'>
                                         {new Date(element.updatedAt).toLocaleDateString('en-IN', {
                                             day: 'numeric',
                                             month: 'short',

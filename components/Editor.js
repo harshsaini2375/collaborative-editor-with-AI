@@ -26,7 +26,7 @@ const Editor = ({ docLink }) => {
     <div>
       <div className='home h-[93vh] md:h-[90vh] w-screen px-2 md:px-6 gap-6 flex bg-[#f7f7f7]'>
         {/* responsiveness for AI */}
-        <button  onClick={() => setopenAIpanel(!openAIpanel)} className= {`md:hidden ${openAIpanel ? 'hidden' : 'fixed'} bottom-[13px] cursor-pointer left-[85vw] z-70 `} >
+        <button  onClick={() => setopenAIpanel(!openAIpanel)} className= {`md:hidden ${openAIpanel ? 'hidden' : 'fixed'} top-[145vw] cursor-pointer left-[85vw] z-70 `} >
         <div className='h-[30px] w-[31px] rounded-full border flex justify-center items-center shadow-lg '> <Image src={'/aislider.svg'} alt='ham' height={20} width={20} /> </div>
         </button>
 
@@ -55,8 +55,8 @@ const Editor = ({ docLink }) => {
 
       {/* for chatpanel */}
       {/* hamburger for mobile for chatbot */}
-        <button  onClick={() => setopenchatpanel(!openchatpanel)} className=" md:hidden fixed top-[8px] left-[10px] z-50  ">
-          {openchatpanel ? <Image src={'/cross.svg'} alt='ham' height={25} width={25} /> : <Image src={'/sidechat.svg'} alt='ham' height={30} width={30} />} 
+        <button  onClick={() => setopenchatpanel(!openchatpanel)} className=" md:hidden fixed top-[10px] left-[9px] z-50  ">
+          {openchatpanel ? <Image src={'/cross.svg'} alt='ham' height={25} width={25} /> : <Image src={'/sidechat.svg'} alt='ham' height={25} width={25} />} 
         </button>
 
         <div className={`fixed  top-0 left-0 h-full w-[87vw] bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-40 md:hidden ${

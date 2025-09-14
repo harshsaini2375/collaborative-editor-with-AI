@@ -418,7 +418,7 @@ const RichTextEditor = ({ documentId }) => {
 
       </div>
 
-      <div className='AI_buttons flex gap-[19px] md:gap-[28px] text-xs md:text-sm md:font-bold  h-[4vh]' >
+      <div className='AI_buttons flex gap-[16px] md:gap-[28px] text-[10px] md:text-sm md:font-bold  h-[4vh]' >
         <button
           onClick={() => handleAIChat('improve')}
           className="border-2  border-gray-300 rounded-lg px-1 md:px-4 py-1 hover:text-yellow-500"
@@ -448,9 +448,9 @@ const RichTextEditor = ({ documentId }) => {
 
       </div>
 
-      <div className="get_Document_link  mt-3 h-[6vh] w-full rounded-2xl flex gap-2  md:gap-7 items-center  ">
+      <div className="get_Document_link mt-1  md:mt-3 h-[6vh] w-full rounded-2xl flex gap-2  md:gap-7 items-center  ">
         <div className='flex gap-2 md:gap-[28px]'>
-          <div className='your_link border-2 border-gray-300 w-[51vw] md:w-[26.5vw] py-[5px] rounded-lg text-sm px-2 flex items-center text-gray-400 overflow-hidden whitespace-nowrap '>
+          <div className='your_link border-2 border-gray-300 w-[50vw] md:w-[26.5vw] py-[5px] rounded-lg text-sm px-2 flex items-center text-gray-400 overflow-hidden whitespace-nowrap '>
             {documentId}
           </div>
           <button onClick={() => {
@@ -461,7 +461,7 @@ const RichTextEditor = ({ documentId }) => {
         </div>
         <button
           onClick={handleDownload}
-          className="md:pl-[14px] md:pr-[18px] px-1 py-[6px] md:py-[3px] cursor-pointer bg-gradient-to-r flex gap-2  from-[#8150f2] to-[#407cf5] text-white text-sm md:text-base  md:font-semibold rounded-md"
+          className="md:pl-[14px] md:pr-[18px] px-[2px] py-[8px] md:py-[3px] cursor-pointer bg-gradient-to-r flex gap-2  from-[#8150f2] to-[#407cf5] text-white text-xs md:text-base  md:font-semibold rounded-md"
         >
           <Image className='hidden md:block ' src={'/download.svg'} alt='download' width={20} height={20} />
           Download PDF

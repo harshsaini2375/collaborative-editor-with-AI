@@ -43,10 +43,10 @@ export default function Home() {
 
 
   return (
-    <div className='home h-[93vh] md:h-[90vh] w-screen px-2 md:px-5 gap-5 flex bg-[#f7f7f7]'>
+    <div className='relative home h-[93vh] md:h-[90vh] w-screen px-2 md:px-5 gap-5 flex bg-[#f7f7f7]'>
 
       {/* responsiveness for AI */}
-      <button onClick={() => setopenAIpanel(!openAIpanel)} className={`md:hidden ${openAIpanel ? 'hidden' : 'fixed'} bottom-[25px] cursor-pointer left-[85vw] z-70 `} >
+      <button onClick={() => setopenAIpanel(!openAIpanel)} className={`md:hidden ${openAIpanel ? 'hidden' : 'fixed'} top-[170vw] cursor-pointer left-[85vw] z-70 `} >
         <div className='h-[30px] w-[31px] rounded-full border flex justify-center items-center shadow-lg '> <Image src={'/aislider.svg'} alt='ham' height={20} width={20} /> </div>
       </button>
 
@@ -73,7 +73,7 @@ export default function Home() {
         transition-shadow duration-300  '>
 
         <div className='intro w-full h-fit md:h-[35vh] flex flex-col items-center justify-center'>
-          <h1 className='text-lg md:text-4xl '>Collaborative Editing Supercharged with AI</h1>
+          <h1 className='text-sm font-bold md:font-normal md:text-4xl '>Collaborative Editing Supercharged with AI</h1>
           <p className='text-sm md:text-lg my-2 md:my-5 w-[80vw] md:w-[40vw] text-center' >Create, edit, and collaborate on documents in real-time with AI-powered writing assistance. The modern way to write together.</p>
           <div className='AddAndJoin w-full md:w-[38vw] flex-col md:flex-row flex gap-2 justify-between  items-center mt-5 md:mt-0 mb-10 md:mb-0'>
             <AddDocument buttonName={'Create  Document'} />
@@ -88,7 +88,7 @@ export default function Home() {
                 />
                 <button
                   type="submit"
-                  className="px-7 py-2 bg-green-600 cursor-pointer text-white rounded-lg hover:bg-green-700 transition"
+                  className="px-3 py-2 bg-green-600 cursor-pointer text-white rounded-lg hover:bg-green-700 transition"
                 >
                   Join
                 </button>
@@ -104,7 +104,7 @@ export default function Home() {
 
             {mydocuments.length == 0 ? (<div className='text-gray-400'>No documents available yet</div>) :
               mydocuments.map((element) => (
-                <Link key={element._id} href={`/collabeditor/${element._id}`}><div className='currDoc flex-none relative overflow-hidden h-[18vh] bg-[#f7f7f7] w-[29vw] md:w-[9vw] border-2 border-gray-200 rounded-2xl '>
+                <Link key={element._id} href={`/collabeditor/${element._id}`}><div className='currDoc flex-none relative overflow-hidden h-[18vh] bg-[#f7f7f7] w-[28vw] md:w-[9vw] border-2 border-gray-200 rounded-2xl '>
                   <Image className='absolute top-6 left-3 z-10 ' src={'/document.svg'} alt='recent' height={27} width={27} />
                   <div className='absolute bottom-0 bg-white h-[70%] w-full px-4 py-2 flex items-end'><div className='text-sm font-semibold w-full h-[7vh] overflow-hidden'>{element.docname}</div></div>
                 </div></Link>

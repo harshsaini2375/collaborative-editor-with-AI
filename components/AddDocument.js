@@ -54,7 +54,7 @@ const AddDocument = ({templateContent, buttonName}) => {
 
     return (
         <div>
-            <button  onClick={() => setShowForm(true)} className=' px-2 py-1 md:px-4 md:py-2 cursor-pointer rounded-md md:text-base text-sm md:rounded-lg bg-gradient-to-r from-purple-400 to-blue-400 text-white'>{buttonName}</button>
+            <button  onClick={() => setShowForm(true)} className=' px-1 py-[6px] md:px-4 md:py-2 cursor-pointer rounded-md md:text-base text-xs md:rounded-lg bg-gradient-to-r from-purple-400 to-blue-400 text-white'>{buttonName}</button>
 
 
             {showForm && (

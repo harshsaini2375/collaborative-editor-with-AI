@@ -47,7 +47,7 @@ const Navbar = () => {
         <span className="text-lg">Welcome back {session?.user.name && session.user.name.charAt().toUpperCase()+session.user.name.slice(1).toLowerCase()}</span>
         <span className="text-sm text-gray-400">{currentDate}</span>
       </div>
-      <div className='navbar  bg-[#626c66]  md:px-10 text-white h-[5vh] md:h-[7vh] w-[77%] md:w-[50%] rounded-md  flex justify-around items-center text-sm md:text-base  '>
+      <div className='navbar bg-black md:bg-[#626c66]  md:px-10 text-white h-[5vh] md:h-[7vh] w-[77%] md:w-[50%] rounded-md  flex justify-around items-center text-xs md:text-base  '>
         <Link href={session?'/':'/login'} className='' >Home</Link>
         <Link href={session?'/documents':'/login'} className='' >Documents</Link>
         <Link href={session?'/templates':'/login'} className='' >Templates</Link>
@@ -60,9 +60,9 @@ const Navbar = () => {
       <div className="profile h-full w-[10%] md:w-[25%] ">
         {session &&  <div className='h-full w-full flex justify-end items-center gap-3 '>
 
-          <div  className={`${!userinfo && 'hidden'}  w-fit md:w-full top-[45px] md:flex-row flex-col-reverse md:flex md:justify-end md:items-center gap-1 p-2 md:p-0 md:gap-3 md:static fixed md:bg-[#f7f7f7] bg-[#626c66] z-20 rounded-md md:rounded-none `}><button onClick={() => { signOut() }} className='bg-white rounded-[4px] md:rounded-md px-4 py-1 cursor-pointer text-xs md:text-base text-gray-400 md:mr-2 border-2 md:border-none border-gray-200 w-fit '>Logout</button>
-          <div className='h-fit w-fit md:text-base text-sm text-white md:text-gray-400 md:mt-0 mt-1'>{session?.user.name}</div>
-          <div className='h-fit w-fit md:text-base text-xs text-white md:text-gray-400 md:hidden'>{session?.user.email}</div>
+          <div  className={`${!userinfo && 'hidden'}  w-fit md:w-full top-[45px] md:flex-row flex-col-reverse md:flex md:justify-end md:items-center gap-1 p-2 md:p-0 md:gap-3 md:static fixed md:bg-[#f7f7f7] bg-black z-20 rounded-md md:rounded-none `}><button onClick={() => { signOut() }} className='bg-white rounded-[4px] md:rounded-md px-4 py-1 cursor-pointer text-xs md:text-base md:text-gray-400 text-black md:mr-2 border-2 md:border-none border-gray-200 w-fit '>Logout</button>
+          <div className='h-fit w-fit md:text-base text-sm text-gray-400 md:mt-0 mt-1'>{session?.user.name}</div>
+          <div className='h-fit w-fit md:text-base text-xs text-gray-400 md:hidden'>{session?.user.email}</div>
           </div>
 
           {/* for toggling of info in mobile */}

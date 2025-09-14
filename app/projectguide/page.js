@@ -71,10 +71,10 @@ const page = () => {
                 <h2 className="text-2xl font-bold mb-4">🚀 Ready to Get Started?</h2>
                 <p className="text-gray-600 mb-6">Create a document, explore templates, or join an existing one.</p>
                 <div className="flex justify-center gap-4">
-                    <Link href="/documents" className="px-4 md:px-6 py-2 md:py-3 md:text-base text-sm bg-blue-600 text-white rounded-md md:rounded-lg hover:bg-blue-700 transition">
+                    <Link href="/documents" className="px-1 md:px-6 py-2 md:py-3 md:text-base text-sm bg-blue-600 text-white rounded-md md:rounded-lg hover:bg-blue-700 transition">
                         View Your Documents
                     </Link>
-                    <Link href="/templates" className="px-4 md:px-6 py-2 md:py-3 md:text-base text-sm bg-green-600 text-white rounded-md md:rounded-lg hover:bg-green-700 transition">
+                    <Link href="/templates" className="px-1 md:px-6 py-2 md:py-3 md:text-base text-sm bg-green-600 text-white rounded-md md:rounded-lg hover:bg-green-700 transition">
                         Try a Template
                     </Link>
                 </div>
